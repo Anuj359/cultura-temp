@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    animation: fadeIn 2s ease-out;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: #d4af37;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    display: inline-block;
+    cursor: default;
+    transition: all 0.5s ease;
+    text-transform: uppercase;
+}
+
+.logo:hover {
+    color: #fff;
+    /* text-shadow: 0 0 10px #d4af37, 0 0 20px #d4af37; */
+    letter-spacing: 12px;
+}
+
+.logo::before, .logo::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: #d4af37;
+    transition: all 0.3s ease;
+}
+
+.logo::before {
+    top: 0;
+    left: 0;
+}
+
+.logo::after {
+    bottom: 0;
+    right: 0;
+}
+
+.logo:hover::before, .logo:hover::after {
+    width: 100%;
+}
+
+/* Rest of your CSS remains the same from previous version */
+.diamond-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="35" y="0" width="30" height="30" transform="rotate(45 50 50)" fill="%23d4af37" fill-opacity="0.1"/></svg>');
+    background-size: 100px 100px;
+    animation: diamondMove 20s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes diamondMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+.coming-soon {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.5s forwards;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 1s forwards;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.divider {
+    width: 100px;
+    height: 1px;
+    background-color: #d4af37;
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 1.5s forwards;
+}
+
+.description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 2s forwards;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 500px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 2.5s forwards;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d4af37;
+    font-size: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+}
+
+input:focus {
+    outline: none;
+    border-color: #d4af37;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+}
+
+.submit-btn {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    background: #d4af37;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    background: #e6c04d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.submit-btn .btn-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover .btn-icon {
+    animation: gemBounce 0.6s ease infinite alternate;
+}
+
+@keyframes gemBounce {
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-50%) rotate(20deg) scale(1.2);
+    }
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 3s forwards;
+}
+
+.social-links a {
+    color: #fff;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.social-links a:hover {
+    color: #d4af37;
+    transform: translateY(-3px);
+}
+
+.social-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: #d4af37;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .logo {
+        font-size: 4rem;
+    }
+    
+    .coming-soon {
+        font-size: 2.5rem;
+    }
+    
+    .tagline {
+        font-size: 1.3rem;
+        letter-spacing: 6px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 3.5rem;
+        letter-spacing: 6px;
+    }
+    
+    .logo:hover {
+        letter-spacing: 8px;
+    }
+    
+    .coming-soon {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+        letter-spacing: 4px;
+    }
+    
+    .description {
+        font-size: 1rem;
+    }
+    
+    .contact-form {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        letter-spacing: 4px;
+    }
+    
+    .logo:hover {
+        letter-spacing: 6px;
+    }
+    
+    .coming-soon {
+        font-size: 1.6rem;
+    }
+    
+    .tagline {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .divider {
+        margin: 1.5rem 0;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    input {
+        padding: 12px 12px 12px 40px;
+    }
+    
+    .submit-btn {
+        padding: 12px;
+    }
+    
+    .social-links {
+        margin-top: 2rem;
+    }
+    
+    .social-links a {
+        margin: 0 10px;
+        font-size: 1rem;
+    }
+}
