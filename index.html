@@ -22,8 +22,20 @@
         <div class="divider"></div>
         <p class="description">Exquisite craftsmanship meets timeless elegance. Be the first to know when we launch.</p>
         
-        <form class="contact-form" id="customerForm">
+        <form class="contact-form" id="customerForm" action="https://api.staticforms.xyz/submit" method="POST">
             <div class="form-group">
+                <input type="hidden" name="apiKey" value="sf_472bee564jbli097eaf9f3k7">
+                  <!-- Enable reply-to functionality -->
+                  <input type="hidden" name="replyTo" value="@">
+                
+                  <!-- Anti-spam honeypot field -->
+                  <input
+                    type="text"
+                    name="honeypot"
+                    style="display: none"
+                    tabindex="-1"
+                    autocomplete="off"
+                  >
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
                 <i class="fas fa-user"></i>
             </div>
@@ -35,6 +47,9 @@
                 <input type="tel" id="phone" name="phone" placeholder="Phone (optional)">
                 <i class="fas fa-phone"></i>
             </div>
+              <!-- reCAPTCHA integration -->
+              <div class="g-recaptcha" data-sitekey="6LfyuyQrAAAAAFiRaLtM-vSMgLTDqzI8Yb7UAolL"></div>
+              <script src="https://www.google.com/recaptcha/api.js" async defer></script>
             <button type="submit" class="submit-btn">
                 <span class="btn-text">Notify Me</span>
                 <span class="btn-icon">💎</span>
