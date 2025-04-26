@@ -16,27 +16,21 @@
     <div class="diamond-overlay"></div>
     
     <div class="content">
-        <div class="logo" >CULTURA</div>
+        <div class="logo">CULTURA</div>
         <h1 class="coming-soon">We Are Coming Soon</h1>
         <p class="tagline">To Jewel You Up</p>
         <div class="divider"></div>
         <p class="description">Exquisite craftsmanship meets timeless elegance. Be the first to know when we launch.</p>
         
         <form class="contact-form" id="customerForm" action="https://api.staticforms.xyz/submit" method="POST">
+            <input type="hidden" name="accessKey" value="sf_472bee564jbli097eaf9f3k7"> <!-- Changed from apiKey to accessKey -->
+<!--             <input type="hidden" name="redirectTo" value="https://tscc.co.in/thank-you.html"> -->
+            <input type="hidden" name="subject" value="New Submission from Cultura Jewelry">
+            
+            <!-- Anti-spam honeypot field -->
+            <input type="text" name="honeypot" style="display: none">
+            
             <div class="form-group">
-                <input type="hidden" name="apiKey" value="sf_472bee564jbli097eaf9f3k7">
-                <input type="hidden" name="redirectTo" value="https://tscc.co.in/thank-you.html">
-                  <!-- Enable reply-to functionality -->
-                  <input type="hidden" name="replyTo" value="@">
-                
-                  <!-- Anti-spam honeypot field -->
-                  <input
-                    type="text"
-                    name="honeypot"
-                    style="display: none"
-                    tabindex="-1"
-                    autocomplete="off"
-                  >
                 <input type="text" id="name" name="name" placeholder="Your Name" required>
                 <i class="fas fa-user"></i>
             </div>
@@ -48,14 +42,21 @@
                 <input type="tel" id="phone" name="phone" placeholder="Phone (optional)">
                 <i class="fas fa-phone"></i>
             </div>
-              <!-- reCAPTCHA integration -->
-              <div class="g-recaptcha" data-sitekey="6LfyuyQrAAAAAINIM2-LQQ5xXdeTDDbMhGJ-UJys"></div>
-            <button type="submit" class="submit-btn">
+            
+            <!-- reCAPTCHA v2 -->
+            <div class="g-recaptcha" data-sitekey="6LfyuyQrAAAAAINIM2-LQQ5xXdeTDDbMhGJ-UJys" data-callback="enableSubmit"></div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn" disabled>
                 <span class="btn-text">Notify Me</span>
                 <span class="btn-icon">💎</span>
             </button>
+            
+            <!-- Error message container -->
+            <div id="formError" style="color: #ff6b6b; margin-top: 10px; display: none;"></div>
         </form>
+        
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        
         <div class="social-links">
             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -64,5 +65,26 @@
     </div>
     
     <script src="script.js"></script>
+    <script>
+        // Enable submit button after reCAPTCHA verification
+        function enableSubmit() {
+            document.getElementById('submitBtn').disabled = false;
+        }
+        
+        // Handle form submission
+        document.getElementById('customerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate reCAPTCHA
+            if (grecaptcha.getResponse().length === 0) {
+                document.getElementById('formError').textContent = 'Please complete the reCAPTCHA verification';
+                document.getElementById('formError').style.display = 'block';
+                return;
+            }
+            
+            // Submit the form
+            this.submit();
+        });
+    </script>
 </body>
 </html>
